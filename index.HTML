@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 360px;
+            text-align: center;
+        }
+        h1 {
+            color: #1877f2;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .login-btn {
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #165dd7;
+        }
+        .forgot-link {
+            display: block;
+            margin-top: 12px;
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+        .warning {
+            color: red;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>facebook</h1>
+        <input type="text" id="email" placeholder="Email or phone number" />
+        <input type="password" id="password" placeholder="Password" />
+        <button class="login-btn" onclick="logData()">Log In</button>
+        <a href="#" class="forgot-link">Forgotten password?</a>
+    </div>
+
+    <script>
+        function logData() {
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+
+            if (email && password) {
+                // Show data in console
+                console.log(`Email: ${email}`);
+                console.log(`Password: ${password}`);
+            } else {
+                alert('يرجى إدخال البيانات!');
+            }
+        }
+    </script>
+</body>
+</html>
