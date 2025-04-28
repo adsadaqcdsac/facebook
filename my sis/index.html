@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ilv</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Great Vibes', cursive;
+      background: url('lif.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .top-text {
+      position: absolute;
+      top: 20px;
+      width: 90%;
+      font-size: 2em;
+      color: blue;
+      text-shadow: 2px 2px 5px #000;
+      line-height: 1.4;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .top-text .highlight {
+      color: orange;
+    }
+    .video-container {
+      width: 90%;
+      max-width: 600px;
+      margin-top: 120px;
+      animation: fadeIn 3s ease-in-out;
+    }
+    video {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .move-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background-color: orange;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      animation: fadeIn 4s ease-in-out;
+    }
+    .move-button:hover {
+      background-color: darkorange;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-text">
+    you are my <span class="highlight">music</span> that make me move
+  </div>
+
+  <div class="video-container">
+    <video id="ilv" muted loop playsinline>
+      <source src="ilv.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <button class="move-button" onclick="playBoth()">move</button>
+
+  <audio id="frv" src="frv.mp3"></audio>
+
+  <script>
+    function playBoth() {
+      const video = document.getElementById('ilv');
+      const music = document.getElementById('frv');
+
+      video.currentTime = 0; // Restart video from beginning
+      video.play();
+      
+      music.currentTime = 0; // Restart music from beginning
+      music.play();
+    }
+  </script>
+
+</body>
+</html>
